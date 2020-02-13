@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "http://localhost")
 public class ShopController {
 
     @Autowired
     private ShopRepository shopRepository;
 
-	@CrossOrigin(origins = "http://localhost")
+	
     @GetMapping("/shops")
     public Page<Shop> getAllShops(Pageable pageable) {
         return shopRepository.findAll(pageable);
@@ -29,7 +30,7 @@ public class ShopController {
 	
 	
 	// Single item
-	@CrossOrigin(origins = "http://localhost")
+
 	@GetMapping("/shops/{shopId}")
 	Shop one(@PathVariable Long shopId) {
 		
@@ -41,13 +42,13 @@ public class ShopController {
 	
 	
 
-	@CrossOrigin(origins = "http://localhost")
+
     @PostMapping("/shops")
     public Shop createShop(@Valid @RequestBody Shop shop) {
         return shopRepository.save(shop);
     }
 
-	@CrossOrigin(origins = "http://localhost")
+
     @PutMapping("/shops/{shopId}")
     public Shop updateShop(@PathVariable Long shopId, @Valid @RequestBody Shop shopRequest) {
         return shopRepository.findById(shopId).map(shop -> {
@@ -57,7 +58,7 @@ public class ShopController {
         }).orElseThrow(() -> new ResourceNotFoundException("ShopId " + shopId + " not found"));
     }
 
-	@CrossOrigin(origins = "http://localhost")
+
     @DeleteMapping("/shops/{shopId}")
     public ResponseEntity<?> deleteShop(@PathVariable Long shopId) {
         return shopRepository.findById(shopId).map(shop -> {

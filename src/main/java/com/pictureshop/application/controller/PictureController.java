@@ -31,8 +31,7 @@ public class PictureController {
 
 	@CrossOrigin(origins = "http://localhost")
     @PostMapping("/shops/{shopId}/pictures")
-    public Picture createPicture(@PathVariable (value = "shopId") Long shopId,
-                                 @Valid @RequestBody Picture picture) {
+    public Picture createPicture(@PathVariable (value = "shopId") Long shopId, @RequestBody Picture picture) {
         return shopRepository.findById(shopId).map(shop -> {
             picture.setShop(shop);
             return pictureRepository.save(picture);
