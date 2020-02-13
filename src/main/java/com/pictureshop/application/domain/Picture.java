@@ -30,7 +30,7 @@ public class Picture extends AuditModel {
     private Shop shop;
 
 
-	public Picture(@NotNull String author, String name, @NotNull double price, Shop shop) {
+	public Picture(String author, @NotNull String name, @NotNull double price, Shop shop) {
 		super();
 		this.author = author;
 		this.name = name;

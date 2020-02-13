@@ -5,6 +5,8 @@ package com.pictureshop.application.controller;
 import com.pictureshop.application.exception.ResourceNotFoundException;
 import com.pictureshop.application.domain.Shop;
 import com.pictureshop.application.persistence.ShopRepository;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +26,20 @@ public class ShopController {
     public Page<Shop> getAllShops(Pageable pageable) {
         return shopRepository.findAll(pageable);
     }
+	
+	
+	// Single item
+	@CrossOrigin(origins = "http://localhost")
+	@GetMapping("/shops/{shopId}")
+	Shop one(@PathVariable Long shopId) {
+		
+		return shopRepository.findById(shopId)
+			.orElseThrow(() -> new ResourceNotFoundException("ShopId " + shopId + " not found"));
+	}
+	
+	
+	
+	
 
 	@CrossOrigin(origins = "http://localhost")
     @PostMapping("/shops")

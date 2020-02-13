@@ -32,7 +32,7 @@ public class Shop extends AuditModel {
 		this.maxPictures = maxPictures;
 	}
 	
-	Shop() {}
+	public Shop() {}
 
 	public Long getId() {
 		return id;
