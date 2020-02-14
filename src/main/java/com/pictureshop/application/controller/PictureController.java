@@ -8,8 +8,12 @@ import com.pictureshop.application.persistence.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -64,4 +68,17 @@ public class PictureController {
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException("Picture not found with id " + pictureId + " and shopId " + shopId));
     }
+	
+
+	@CrossOrigin(origins = "http://localhost")
+    @DeleteMapping("/shops/{shopId}/pictures")
+    public void deleteAllPicturesByShopId(@PathVariable (value = "shopId") Long shopId) {
+        
+	pictureRepository.deleteAll(pictureRepository.findByShopId(shopId, null));
+        
+    }
+
+	
+	
+	
 }
