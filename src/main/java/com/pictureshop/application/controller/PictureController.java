@@ -59,15 +59,6 @@ public class PictureController {
         }).orElseThrow(() -> new ResourceNotFoundException("PictureId " + pictureId + "not found"));
     }
 
-	@CrossOrigin(origins = "http://localhost")
-    @DeleteMapping("/shops/{shopId}/pictures/{pictureId}")
-    public ResponseEntity<?> deletePicture(@PathVariable (value = "shopId") Long shopId,
-                              @PathVariable (value = "pictureId") Long pictureId) {
-        return pictureRepository.findByIdAndShopId(pictureId, shopId).map(picture -> {
-            pictureRepository.delete(picture);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("Picture not found with id " + pictureId + " and shopId " + shopId));
-    }
 	
 
 	@CrossOrigin(origins = "http://localhost")
@@ -78,7 +69,6 @@ public class PictureController {
         
     }
 
-	
-	
+		
 	
 }

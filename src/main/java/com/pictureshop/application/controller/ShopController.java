@@ -39,9 +39,6 @@ public class ShopController {
 	}
 	
 	
-	
-	
-
 
     @PostMapping("/shops")
     public Shop createShop(@Valid @RequestBody Shop shop) {

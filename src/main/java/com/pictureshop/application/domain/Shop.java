@@ -7,10 +7,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "shops")
 public class Shop extends AuditModel {
-    /**
-	 * 
-	 */
-	//private static final long serialVersionUID = 1L;
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
