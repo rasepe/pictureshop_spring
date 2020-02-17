@@ -30,7 +30,6 @@ public class ShopController {
 	
 	
 	// Single item
-
 	@GetMapping("/shops/{shopId}")
 	Shop one(@PathVariable Long shopId) {
 		
@@ -39,7 +38,6 @@ public class ShopController {
 	}
 	
 	
-
     @PostMapping("/shops")
     public Shop createShop(@Valid @RequestBody Shop shop) {
         return shopRepository.save(shop);

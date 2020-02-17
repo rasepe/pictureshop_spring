@@ -16,5 +16,5 @@ import java.util.Optional;
 public interface PictureRepository extends JpaRepository<Picture, Long> {
     Page<Picture> findByShopId(Long shopId, Pageable pageable);
     Optional<Picture> findByIdAndShopId(Long id, Long shopId);
-    List<Picture> deleteByShopId(Long shopId);
+   // List<Picture> deleteByShopId(Long shopId);
 }

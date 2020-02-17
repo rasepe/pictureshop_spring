@@ -25,7 +25,6 @@ public class Shop extends AuditModel {
     
     private int numPictures;
 
-   // private ArrayList<Picture> pictures = new ArrayList<Picture>();
     
 	public Shop(@NotNull @Size(max = 100) String name, @NotNull int maxPictures) {
 		super();
@@ -70,7 +69,5 @@ public class Shop extends AuditModel {
 
 
     
-    
-
   
 }

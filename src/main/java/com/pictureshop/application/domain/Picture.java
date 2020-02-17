@@ -1,7 +1,6 @@
 package com.pictureshop.application.domain;
 
 import com.pictureshop.application.domain.Shop;
-import com.pictureshop.application.exception.PictureLimitException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,21 +30,15 @@ public class Picture extends AuditModel {
     private Shop shop;
 
 
-	public Picture(String author, @NotNull String name, @NotNull double price, Shop shop) throws PictureLimitException {
-		
-		super();
-		
-	//	if (shop.getPictures().size() >= shop.getMaxPictures()) {  
-		//	throw new PictureLimitException(PictureLimitException.PICTURE_LIMIT);
-	//	} else {
-			
-			this.author = author;
-			this.name = name;
-			this.price = price;
-			this.shop = shop;
-		//	shop.setNumPictures(shop.getNumPictures()+1);
-	//	}
-	}
+    public Picture(String author, @NotNull String name, @NotNull double price, Shop shop)  {
+
+    	super();
+
+    	this.author = author;
+    	this.name = name;
+    	this.price = price;
+    	this.shop = shop;
+    }
 
 	
 	Picture() {}
@@ -100,8 +93,6 @@ public class Picture extends AuditModel {
 	}
 
     
-    
-	
 
     
 }

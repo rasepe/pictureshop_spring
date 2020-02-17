@@ -2,19 +2,13 @@ package com.pictureshop.application.controller;
 
 
 import com.pictureshop.application.exception.ResourceNotFoundException;
-import com.pictureshop.application.exception.PictureLimitException;
 import com.pictureshop.application.domain.Picture;
 import com.pictureshop.application.persistence.PictureRepository;
 import com.pictureshop.application.persistence.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
 
 import javax.validation.Valid;
 
