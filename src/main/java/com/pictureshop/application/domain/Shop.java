@@ -1,6 +1,5 @@
 package com.pictureshop.application.domain;
 
-import java.util.ArrayList;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
