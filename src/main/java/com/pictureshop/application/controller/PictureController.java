@@ -34,6 +34,9 @@ public class PictureController {
 		
         return shopRepository.findById(shopId).map(shop -> {
             picture.setShop(shop);
+            if (picture.getAuthor()=="") {
+            picture.setAuthor("ANONYMOUS");
+            };
             shop.setNumPictures(shop.getNumPictures()+1);
             return pictureRepository.save(picture);
         }).orElseThrow(() -> new ResourceNotFoundException("ShopId " + shopId + " not found"));
