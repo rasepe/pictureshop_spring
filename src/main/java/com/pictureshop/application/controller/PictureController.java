@@ -2,6 +2,7 @@ package com.pictureshop.application.controller;
 
 
 import com.pictureshop.application.exception.ResourceNotFoundException;
+import com.pictureshop.application.exception.PictureLimitException;
 import com.pictureshop.application.domain.Picture;
 import com.pictureshop.application.persistence.PictureRepository;
 import com.pictureshop.application.persistence.ShopRepository;
@@ -35,12 +36,17 @@ public class PictureController {
 
 	@CrossOrigin(origins = "http://localhost")
     @PostMapping("/shops/{shopId}/pictures")
-    public Picture createPicture(@PathVariable (value = "shopId") Long shopId, @RequestBody Picture picture) {
+    public Picture createPicture(@PathVariable (value = "shopId") Long shopId, @RequestBody Picture picture)  {
+		
         return shopRepository.findById(shopId).map(shop -> {
             picture.setShop(shop);
+            shop.setNumPictures(shop.getNumPictures()+1);
             return pictureRepository.save(picture);
         }).orElseThrow(() -> new ResourceNotFoundException("ShopId " + shopId + " not found"));
-    }
+		
+		
+		}
+    
 
 	@CrossOrigin(origins = "http://localhost")
     @PutMapping("/shops/{shopId}/pictures/{pictureId}")

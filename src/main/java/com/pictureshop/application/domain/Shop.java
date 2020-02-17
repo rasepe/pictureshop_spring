@@ -1,5 +1,7 @@
 package com.pictureshop.application.domain;
 
+import java.util.ArrayList;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,13 +22,16 @@ public class Shop extends AuditModel {
 
     @NotNull
     private int maxPictures;
-
     
+    private int numPictures;
+
+   // private ArrayList<Picture> pictures = new ArrayList<Picture>();
     
 	public Shop(@NotNull @Size(max = 100) String name, @NotNull int maxPictures) {
 		super();
 		this.name = name;
 		this.maxPictures = maxPictures;
+		this.numPictures = 0;
 	}
 	
 	public Shop() {}
@@ -54,8 +59,18 @@ public class Shop extends AuditModel {
 	public void setMaxPictures(int maxPictures) {
 		this.maxPictures = maxPictures;
 	}
+
+	public int getNumPictures() {
+		return numPictures;
+	}
+
+	public void setNumPictures(int numPictures) {
+		this.numPictures = numPictures;
+	}
+
+
     
     
 
-    // Getters and Setters (Omitted for brevity)
+  
 }
